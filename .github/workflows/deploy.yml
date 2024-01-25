@@ -3,7 +3,7 @@ on:
   push:
     branches: [ "main" ]
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -13,10 +13,6 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run build
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
     - name: Deploy website
       run: |
         cd build
