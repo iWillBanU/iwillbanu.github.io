@@ -1,0 +1,31 @@
+name: Deploy website
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 21.x
+        cache: 'npm'
+    - run: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        cd build
+        git init
+        git remote add origin ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git
+        git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+        git config user.name "${GITHUB_ACTOR}"
+        git branch -M gh-pages
+        git add .
+        git commit -m "Build"
+        header=$(echo -n "ad-m:${GH_TOKEN}" | base64)
+        git -c http.extraheader="AUTHORIZATION: basic $header" push --force -u origin gh-pages
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
