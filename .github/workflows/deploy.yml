@@ -11,6 +11,7 @@ jobs:
       with:
         node-version: 21.x
         cache: 'npm'
+    - run: nom install
     - run: npm run build
   deploy:
     needs: build
