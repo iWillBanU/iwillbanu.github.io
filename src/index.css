@@ -1,13 +1,174 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@keyframes link-hover {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes link-unhover {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+@keyframes banner {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes avatar {
+    0%, 50% {
+        opacity: 0;
+        transform: translateY(-5%);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+body {
+    background-color: #301934;
+    margin: 0;
+    color: white;
+    font-family: Montserrat, sans-serif;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#banner {
+    width: 100%;
+    height: 25vh;
+    background-image: linear-gradient(transparent, 75%, #301934), url("img/banner.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: -5em;
+    animation-name: banner;
+    animation-duration: 0.5s;
+    z-index: -99;
+}
+
+#info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 3em;
+}
+
+#info-container h2 {
+    font-weight: normal;
+}
+
+#info-container h3 {
+    margin-bottom: 0.5em;
+    color: darkgray;
+    font-weight: normal;
+}
+
+.material-icons {
+    font-size: inherit;
+}
+
+#info-container .material-icons {
+    vertical-align: -9%;
+}
+
+#avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 5px black;
+    animation: avatar;
+    animation-duration: 1s;
+}
+
+#links {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    gap: 1em;
+}
+
+#links a {
+    padding-bottom: 1em;
+    position: relative;
+}
+
+#links a.active {
+    font-weight: bold;
+}
+
+#links a:hover {
+    text-decoration: none;
+}
+
+#links a:after {
+    content: "";
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    animation-name: link-unhover;
+    animation-duration: 0.5s;
+}
+
+#links a.active:after, #links a.active:hover:after {
+    left: 0;
+    width: 100%;
+    animation-name: none;
+}
+
+#links a:hover:after {
+    left: 0;
+    width: 100%;
+    animation-name: link-hover;
+}
+
+main {
+    background-color: #581845;
+    box-shadow: 3px 3px 5px black;
+    padding: 3em;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 1em;
+}
+
+footer {
+    width: 50%;
+    margin: 2em auto 0;
+    color: darkgrey;
+    text-align: right;
+    font-size: smaller;
+}
+
+footer p {
+    margin: 0 0 1em;
+}
+
+footer .material-icons {
+    vertical-align: -10%;
 }
