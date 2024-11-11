@@ -30,7 +30,7 @@ export default function Root() {
                         View the source code on <a href="https://github.com/iWillBanU/iwillbanu.github.io" target="_blank" rel="noreferrer">GitHub <span className="material-icons">open_in_new</span></a>
                     </p>
                     <p>
-                        Banner created by <a href="https://www.instagram.com/reesear_" target="_blank" rel="noreferrer">reesear_ <span className="material-icons">open_in_new</span></a>
+                        Banner created by <a href="https://www.instagram.com/riley__ar" target="_blank" rel="noreferrer">riley__ar <span className="material-icons">open_in_new</span></a>
                         <br />
                         Avatar created by <a href="https://alicake.carrd.co/" target="_blank" rel="noreferrer">Alicake <span className="material-icons">open_in_new</span></a>
                     </p>
